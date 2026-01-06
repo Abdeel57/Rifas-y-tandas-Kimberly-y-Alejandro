@@ -58,9 +58,10 @@ async function bootstrap() {
     // 'http://www.cliente-nuevo.com',
     
     // Cliente: Rifas y tandas Kimberly y Alejandro
-    // TODO: Agregar dominios cuando estén disponibles:
-    // 'https://dominio-kimberly-alejandro.com',
-    // 'https://www.dominio-kimberly-alejandro.com',
+    'https://rifas-y-tandas-kimberly-y-alejandro.netlify.app',
+    'https://www.rifas-y-tandas-kimberly-y-alejandro.netlify.app',
+    'http://rifas-y-tandas-kimberly-y-alejandro.netlify.app',
+    'http://www.rifas-y-tandas-kimberly-y-alejandro.netlify.app',
   ];
 
   app.enableCors({
