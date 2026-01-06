@@ -61,7 +61,7 @@ const HARDCODED_USERS: AdminUser[] = [
   {
     id: '1',
     name: 'Administrador',
-    email: 'admin@luckysnap.com',
+    email: 'admin@kimberlyalejandro.com',
     createdAt: new Date(),
     updatedAt: new Date(),
   }

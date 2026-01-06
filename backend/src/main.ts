@@ -61,18 +61,6 @@ async function bootstrap() {
     // TODO: Agregar dominios cuando estén disponibles:
     // 'https://dominio-kimberly-alejandro.com',
     // 'https://www.dominio-kimberly-alejandro.com',
-    
-    // Cliente: Sorteos Gama
-    'https://sorteosgama.pro',
-    'https://www.sorteosgama.pro',
-    'http://sorteosgama.pro',
-    'http://www.sorteosgama.pro',
-    
-    // Cliente: Lucky Snap (legacy)
-    'https://luckysnaphn.com',
-    'https://www.luckysnaphn.com',
-    'https://luckysnap.netlify.app',
-    'https://neodemo.netlify.app',
   ];
 
   app.enableCors({
