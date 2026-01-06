@@ -1753,6 +1753,9 @@ export class AdminService {
       }
     } catch (error: any) {
       this.logger.error('❌ Error updating settings:', error);
+      this.logger.error('❌ Error stack:', error.stack);
+      this.logger.error('❌ Error code:', error.code);
+      this.logger.error('❌ Error meta:', JSON.stringify(error.meta || {}, null, 2));
       throw new Error(`Failed to update settings: ${error.message || 'Unknown error'}`);
     }
   }
