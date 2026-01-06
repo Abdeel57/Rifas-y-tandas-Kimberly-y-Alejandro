@@ -1614,8 +1614,12 @@ export class AdminService {
           },
         });
 
-        // Invalidar cache de settings
-        await this.cacheService.invalidateSettings();
+        // Invalidar cache de settings (no crítico si falla)
+        try {
+          await this.cacheService.invalidateSettings();
+        } catch (cacheError) {
+          this.logger.warn('⚠️ Error invalidating cache (non-critical):', cacheError);
+        }
 
         this.logger.log('✅ Settings updated successfully');
 

@@ -86,7 +86,12 @@ export class CacheService {
    * Invalidar cache de settings
    */
   async invalidateSettings(): Promise<void> {
-    await this.del('settings:main');
-    this.logger.log('✅ Cache de settings invalidado');
+    try {
+      await this.del('settings:main');
+      this.logger.log('✅ Cache de settings invalidado');
+    } catch (error) {
+      // No crítico si falla el cache
+      this.logger.warn('⚠️ Error invalidating settings cache (non-critical):', error);
+    }
   }
 }
