@@ -1,6 +1,6 @@
 {
   "clientName": "Rifas y tandas Kimberly y Alejandro",
-  "domain": "dominio-del-cliente.com",
+  "domain": "rifasytandaskya.com",
   "databaseUrl": "postgresql://usuario:password@host:puerto/database",
   "admin": {
     "username": "admin",
