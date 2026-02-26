@@ -1,5 +1,5 @@
 import { IsString, IsNotEmpty, IsOptional, IsNumber, IsDateString, IsArray, IsBoolean, Min, Max, ValidateNested, IsUrl, MinLength, MaxLength, Matches } from 'class-validator';
-import { Type } from 'class-transformer';
+import { Type, Transform } from 'class-transformer';
 
 class PackDto {
   @IsString({ message: 'El nombre del paquete debe ser un texto' })
@@ -120,12 +120,14 @@ export class UpdateRaffleDto {
   @IsOptional()
   gallery?: string[];
 
+  @Transform(({ value }) => (value === '' || value === undefined ? undefined : Number(value)))
   @IsNumber({}, { message: 'El precio debe ser un número' })
   @IsOptional()
   @Min(0.01, { message: 'El precio debe ser mayor a 0' })
   @Max(1000000, { message: 'El precio no puede ser mayor a 1,000,000' })
   price?: number;
 
+  @Transform(({ value }) => (value === '' || value === undefined ? undefined : Number(value)))
   @IsNumber({}, { message: 'El número de boletos debe ser un número' })
   @IsOptional()
   @Min(1, { message: 'Debe haber al menos 1 boleto' })

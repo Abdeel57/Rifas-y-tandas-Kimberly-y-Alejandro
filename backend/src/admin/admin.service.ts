@@ -819,24 +819,21 @@ export class AdminService {
         raffleData.bonuses = updateRaffleDto.bonuses || [];
       }
 
-      // Campos editables solo si NO tiene boletos vendidos/pagados
+      // Precio siempre editable (permite promociones aunque ya haya ventas)
+      if (updateRaffleDto.price !== undefined) {
+        raffleData.price = Number(updateRaffleDto.price);
+      }
+
+      // Número total de boletos: solo editable si NO hay boletos vendidos/pagados
       if (hasSoldTickets || hasPaidOrders) {
-        this.logger.warn('⚠️ Rifa tiene boletos vendidos/pagados - limitando edición');
-
-        // Solo rechazar cambios si el valor REALMENTE cambió
-        if (updateRaffleDto.price !== undefined && updateRaffleDto.price !== existingRaffle.price) {
-          throw new Error('No se puede cambiar el precio cuando ya hay boletos vendidos');
-        }
-
-        if (updateRaffleDto.tickets !== undefined && updateRaffleDto.tickets !== existingRaffle.tickets) {
+        const newTickets = updateRaffleDto.tickets !== undefined ? Number(updateRaffleDto.tickets) : undefined;
+        const existingTickets = Number(existingRaffle.tickets);
+        const ticketsChanged = newTickets !== undefined && newTickets !== existingTickets;
+        if (ticketsChanged) {
+          this.logger.warn('⚠️ Rifa tiene boletos vendidos/pagados - no se puede cambiar el total de boletos');
           throw new Error('No se puede cambiar el número total de boletos cuando ya hay boletos vendidos');
         }
       } else {
-        // Sin boletos vendidos - permitir editar todo
-        if (updateRaffleDto.price !== undefined) {
-          raffleData.price = Number(updateRaffleDto.price);
-        }
-
         if (updateRaffleDto.tickets !== undefined) {
           raffleData.tickets = Number(updateRaffleDto.tickets);
         }

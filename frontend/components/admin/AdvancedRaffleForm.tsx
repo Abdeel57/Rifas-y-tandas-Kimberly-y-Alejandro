@@ -372,7 +372,7 @@ const AdvancedRaffleForm: React.FC<AdvancedRaffleFormProps> = ({
                                                 </label>
                                                 <input
                                                     type="number"
-                                                    {...register('tickets', { required: 'El número de boletos es requerido', min: 1 })}
+                                                    {...register('tickets', { required: 'El número de boletos es requerido', min: { value: 1, message: 'Mínimo 1 boleto' }, valueAsNumber: true })}
                                                     className={inputClasses}
                                                     placeholder="1000"
                                                 />
@@ -389,7 +389,8 @@ const AdvancedRaffleForm: React.FC<AdvancedRaffleFormProps> = ({
                                                     step="0.01"
                                                     {...register('price', {
                                                         required: 'El precio es requerido',
-                                                        min: { value: 0.01, message: 'El precio debe ser mayor a 0' }
+                                                        min: { value: 0.01, message: 'El precio debe ser mayor a 0' },
+                                                        valueAsNumber: true,
                                                     })}
                                                     className={inputClasses}
                                                     placeholder="50.00"
